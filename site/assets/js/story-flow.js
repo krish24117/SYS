@@ -343,6 +343,13 @@
            confirmation is shown and the story is preserved for the designer. */
         if (booked) {
           booked.hidden = false;
+          /* Two frames so the browser paints the block before the thread
+             starts drawing — a same-frame attribute skips the transition. */
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              booked.setAttribute('data-thread', '');
+            });
+          });
           booked.scrollIntoView({ block: 'nearest' });
         }
         save();

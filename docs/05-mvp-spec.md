@@ -29,6 +29,10 @@ recommendations.
 Each of these is genuinely valuable and each is Phase 3. The MVP's only job is to make
 money and remove admin.
 
+The first version is deliberately focused on one funnel — **story creation → designer
+consultation → quote → payment → production → delivery** — and every screen in scope
+exists to move a story along that line.
+
 ---
 
 ## 2. Actors
@@ -158,6 +162,11 @@ Eight stages, always visual, never a status string:
 05 Stitching  06 Fitting  07 Final  08 Delivered
 ```
 
+The eight stages group into the six-phase arc the design language uses everywhere
+(design doc §0): Story (01) · Design (02) · Fit (03, 06) · Craft (04, 05, 07) ·
+Wear (08) — with Inspiration running alongside as the references that started it. The
+tracker's question is always "where am I in my story?", never "where is order #12345?".
+
 Stage changes push a WhatsApp notification with a deep link back into the app.
 
 ---
@@ -179,6 +188,20 @@ Ready for Delivery   3      stage 8 pending handover
 
 Each number opens a filtered list. Every item in every list has exactly one obvious next
 action.
+
+Below the queue, the active stories as **customer cards** — name first, because the
+designer thinks in people, not orders:
+
+```
+Ananya
+Wedding Story
+₹24,500
+Design approval pending
+
+[ Open Story → ]
+```
+
+One card = who · which story · its value · the one thing blocking it · one action.
 
 ### 5.2 Story detail
 

@@ -9,6 +9,35 @@ so the system survives contact with new pages and new people.
 
 ---
 
+## 0. The principle
+
+Every screen answers one question: **"Where am I in my story?"** Never "where am I in
+the order process?" That distinction is what makes SYS read as a new category of product
+rather than a shop with better fonts.
+
+The whole product — the website now, the app later — is one arc, and every screen knows
+which part of it it belongs to:
+
+```
+STORY → INSPIRATION → DESIGN → FIT → CRAFT → WEAR
+```
+
+| Phase | What it holds | Maps to the 8-stage tracker |
+| --- | --- | --- |
+| **Story** | The customer's reason — occasion, brief | 01 Idea |
+| **Inspiration** | What they love — references, fabric | (runs alongside 01) |
+| **Design** | What SYS proposes | 02 Design |
+| **Fit** | How it becomes theirs | 03 Measurements · 06 Fitting |
+| **Craft** | How it gets made | 04 Cutting · 05 Stitching · 07 Final |
+| **Wear** | The final result | 08 Delivered |
+
+For the app, the direction in one sentence:
+
+> A high-end fashion atelier, a digital moodboard and a personal designer's studio,
+> combined into one elegant web application.
+
+---
+
 ## 1. What we refuse
 
 This list is as important as the tokens. It is the fastest way SYS signals that it is not a
@@ -170,6 +199,17 @@ the image itself. A card that needs a box has a layout problem.
 Large, generous tap targets with hairline borders that fill with clay on hover/selection.
 They are questions, not filters, so they are sized to be read, not scanned.
 
+### Icons
+
+Extremely simple line icons only — a single 1.5px stroke weight, no fills, no interior
+detail, never emoji-as-icon. The working set:
+
+story ✦ · inspiration — image frame · design — pencil · measurements — ruler ·
+fitting — person outline · creation — thread / spool abstraction · delivery — package
+
+Avoid detailed fashion icons (mannequins, dresses, sewing machines). Detailed icons
+decorate; this set labels.
+
 ---
 
 ## 6. Motion
@@ -183,6 +223,19 @@ Restrained and functional.
 - **`prefers-reduced-motion: reduce` disables all of it.** Content is visible by default and
   animation is opt-in via a class, so JavaScript failing never leaves a blank page.
 
+### Micro-interactions
+
+Exactly three, each tied to a real moment in the story — and nothing else:
+
+- **A story begins** → a thin thread draws itself across the screen. Implemented in the
+  flow's confirmation (`.thread` in `sys.css`).
+- **A design is approved** → the arc advances visibly: Story → Design → Create.
+- **A story is completed** → *"Your story is ready."*
+
+The thread is the signature. It stays a 1.5px stroke and about a second of drawing;
+under `prefers-reduced-motion` it is simply there, already drawn. Anything beyond these
+three moments is gimmick, not language.
+
 ---
 
 ## 7. Imagery
@@ -194,6 +247,10 @@ look inevitable.
   transformation strip. Consistency across a page matters more than any individual crop.
 - **Treatment:** natural light, warm neutrals, minimal retouching. The paper background
   should feel continuous with the photograph's ground.
+- **Never generic stock fashion photography.** The editorial vocabulary is: natural
+  light · close-up fabric textures · hands working on garments · sketches · fittings ·
+  stitching · details · real customers · the designer at work. **Show the making, not
+  just the finished clothes.**
 - **The four-frame transformation** — Idea → Design → Creation → Final — is the signature.
   Where all four frames exist for a commission, they are shown together.
 - **Placeholders** (`.ph`) are warm-toned tinted blocks with a caption naming exactly what
