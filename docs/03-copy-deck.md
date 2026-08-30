@@ -57,6 +57,11 @@ Positioning sentence, used at the top of the app and in decks:
 
 > Don't shop for your clothes. Create them.
 
+The monochrome brand statement, used in the footer and wherever the design philosophy
+is stated (a shorter alternate: *"You bring the story. We create what you wear."*):
+
+> Your story is the colour. We create the form.
+
 Attribution line, under the hero:
 
 > Designed by [Designer Name] · Made in India · Custom Worldwide
@@ -134,7 +139,7 @@ headline   From an idea to a garment that is only yours.
 01 IDEA       Your inspiration — a photograph, a fabric, a sketch, a feeling.
 02 DESIGN     A hand sketch. Silhouette, proportion, detail, colour.
 03 CREATION   Pattern, cutting, stitching, embroidery, finishing.
-04 FINAL      You, wearing it.
+04 WEAR       You, wearing it.
 ```
 
 ### 4.5 Stories We've Styled

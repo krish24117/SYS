@@ -194,7 +194,7 @@ The most compelling asset SYS can produce is not a product photograph. It is the
 transformation, shown in four frames:
 
 ```
-IDEA            DESIGN          CREATION              FINAL
+IDEA            DESIGN          CREATION              WEAR
 inspiration  →  hand sketch  →  pattern / stitching →  the customer
 photo,          by the          embroidery,           wearing the
 fabric,         designer        construction          finished garment

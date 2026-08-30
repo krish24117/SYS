@@ -54,63 +54,71 @@ typical Indian boutique website.
 | Crowded product grids | Says "inventory". SYS has no inventory. |
 | Too many fonts | Two families. That is the budget. |
 | Excessive jewellery imagery | The garment is the subject |
-| Generic "luxury fashion" signalling (all-caps serif on black, gold foil) | Signals category, not identity |
+| Generic "luxury fashion" signalling (gold foil, ornament) | Signals category, not identity |
+| Accent-coloured UI elements | The customer's fashion is the colour; the interface competes with nothing |
+| Coloured badges and rainbow status dots | Status is typographic — black / dark grey / light grey |
 | The word "Shop" | See the copy deck. Non-negotiable. |
 
 ---
 
 ## 2. Colour
 
-Warm paper, deep ink, and one restrained accent. Nothing else.
+**Monochrome Luxury.** No brown. No gold. No obvious accent colour. The photography,
+fabrics and garments themselves become the colour.
 
 ```
---sys-paper        #F7F3ED   Warm Ivory — the default ground
---sys-paper-deep   #E8DED1   Soft Sand — cards, sections, subtle surfaces
---sys-ink          #242321   Deep Charcoal — body and headings (14.2:1 on ivory)
---sys-ink-soft     #554D43   secondary text (7.5:1 ivory, 6.3:1 sand)
---sys-ink-faint    #685E56   captions, metadata, eyebrow labels (5.7:1 / 4.8:1)
---sys-clay         #B56F5B   Muted Terracotta — THE accent. Rules, highlights,
-                             active states, focus rings. Never text, never
-                             under white text (3.5:1 as text — fails AA)
---sys-clay-fill    #A26351   interactive fills — buttons, selected chips.
-                             White text on it reads 4.5:1
---sys-clay-text    #8B5546   terracotta used as text (5.5:1 ivory, 4.5:1 sand)
---sys-clay-deep    #8D5646   fill hover / pressed (5.7:1 under white)
---sys-brass        #A58A61   Antique Brass — hairline details only, extremely
-                             sparingly, never text (3.0:1)
---sys-sage         #6E7A63   supporting hue — tints and fills
---sys-ok           #5E6A54   success as text — muted sage (5.2:1)
---sys-error        #96473B   error as text — Muted Brick (5.8:1 / 4.8:1)
---sys-line         #DBCEBD   hairlines
---sys-night        #201C18   inverted sections
+--sys-paper        #FFFFFF   Pure White — the ground
+--sys-paper-deep   #F5F5F3   Soft Grey — secondary surfaces
+--sys-ink          #111111   Near Black — primary text, primary button, dark
+                             sections (18.9:1 on white)
+--sys-ink-soft     #3E3E3C   dark grey — secondary information (10.9:1)
+--sys-ink-faint    #666666   Mid Grey — descriptions, captions, numbers
+                             (5.7:1 white, 5.3:1 soft grey)
+--sys-line         #D9D9D6   Light Grey — borders, upcoming states
+--sys-night        #111111   dark sections are the same near black
 ```
 
-**The ratio discipline: 80% neutral / 15% warm secondary / 5% accent.** Ivory carries
-the page, sand separates, terracotta punctuates. Brass exists for the occasional
-hairline that wants warmth without pulling toward the accent — if it appears more than
-once or twice on a page, it is being misused.
+**The ratio discipline: ~90% white / 7% black / 3% grey hierarchy** — and real fashion
+imagery provides 100% of the colour.
 
-**Why terracotta.** It is warm and Indian in feeling without being maroon, and it reads as a
-pigment — clay, earth, dye — rather than as metal. Gold says "expensive". Clay says
-"made by hand". SYS is the second thing.
+**Why this suits SYS.** The proposition is personal and designer-led. A monochrome
+interface means the interface never competes with the customer's fashion: when a
+customer uploads a red saree, blue fabric, gold embroidery or a colourful inspiration
+image, *that* becomes the visual focus. The UI stays quiet — which is exactly what a
+premium fashion studio should do. It also reads timeless, gender-neutral and
+international, and it will never look like a typical Indian boutique website.
 
-**Accent discipline.** Clay appears on: the primary CTA, active states, rules under section
-labels, and the occasional editorial flourish. It never fills a large area. If a page has
-more than roughly 5% clay by area, it has too much.
+**Grey is hierarchy, not decoration.** Five levels, used strictly:
 
-**One terracotta, three jobs — and the difference matters.** The palette's stated
-accent, `#B56F5B`, fails AA both as text (3.5:1 on ivory) and under white button text
-(3.7:1). So it holds the *decorative* accent roles — rules, highlights, active-state
-borders, focus rings — while two derived shades do the load-bearing work:
-`--sys-clay-fill` (`#A26351`) under white text on buttons and selected chips, and
-`--sys-clay-text` (`#8B5546`) wherever terracotta is a word. All three are close enough
-to read as one hue; the derivation is measured, not aesthetic.
+| Level | Value | Carries |
+| --- | --- | --- |
+| Black | `#111111` | Important information |
+| Dark grey | `#3E3E3C` | Secondary information |
+| Mid grey | `#666666` | Descriptions |
+| Light grey | `#D9D9D6` / `#F5F5F3` | Borders, backgrounds |
+| White | `#FFFFFF` | Space |
 
-**Dark sections.** `--sys-night` is used for at most two full-bleed moments per page — the
-transformation strip and the closing CTA are the natural candidates. Inversion is a pacing
-device, not a theme. `.section--night` rebinds `--sys-clay-text` to `#C07A5C` (4.98:1 on
-night), so any component using that token adapts through the cascade without a per-component
-override.
+Never five random greys — every grey on a page must be one of these, doing that job.
+
+**The one place colour appears: the customer's story.** Uploaded inspiration, fabric
+swatches, a palette extracted from their images. The interface is black, white and
+grey; the Story is not.
+
+> **SYS is monochrome. Your story is not.**
+
+That contrast is brand philosophy, not a styling gap — expressed in the brand line
+*"Your story is the colour. We create the form."*
+
+**Status is typographic, never chromatic.** Current stage black, completed dark grey,
+upcoming light grey. No coloured dots, no coloured badges, no rainbow status system.
+Errors and successes are worded (`"We couldn't save that — try again"`), set in ink,
+and never rely on a hue to be understood.
+
+**Dark sections.** `--sys-night` is the same near black, used for at most two
+full-bleed moments per page — the transformation strip and the closing CTA. White
+serif, grey body copy (`rgba(255,255,255,.62–.72)`), white/grey hairlines. Inside
+`.section--night`, `--sys-ink-faint` rebinds to `#9A9A9A` (6.4:1) so numbers and
+labels stay legible through the cascade.
 
 ---
 
@@ -123,6 +131,9 @@ legible before — and without — the webfonts.
 --sys-display : "Cormorant Garamond", Georgia, "Times New Roman", serif
 --sys-body    : "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
 ```
+
+The contrast between the elegant serif and the neutral sans is what carries the
+luxury feeling — no colour required.
 
 **Cormorant Garamond** is the fashion-editorial voice — a high-contrast garalde that
 reads as a magazine masthead at display sizes. It comes with three handling rules:
@@ -194,11 +205,11 @@ never uniform heights.
 
 Only two, and the hierarchy is absolute.
 
-- **`.btn--primary`** — solid `--sys-clay-fill`, white text, and a trailing **→**. This
-  is *Start Your Story*. There is **one per viewport**, ever.
-- **`.btn--ghost`** — ink text, hairline border, transparent. Everything else, including
-  *Explore Our Work* and *Start on WhatsApp*. Inline secondary actions can also be the
-  `.link` text button with an arrow.
+- **`.btn--primary`** — solid near black, white text, and a trailing **→**. This is
+  *Start Your Story*. There is **one per viewport**, ever.
+- **`.btn--ghost`** — white ground, black 1px border, black text; inverts on hover.
+  Everything else, including *Explore Our Work* and *Start on WhatsApp*. Inline
+  secondary actions can also be the `.link` text button with an arrow.
 
 Both are set uppercase at 0.8125rem with wide tracking, on a **6px rounded
 rectangle** — never a capsule, never a giant colourful e-commerce button.
@@ -209,7 +220,7 @@ rectangle** — never a capsule, never a giant colourful e-commerce button.
 ———— WHAT WE DO
 ```
 
-A short clay rule followed by a tracked uppercase label at `--fs-label`. This is the only
+A short black rule followed by a tracked uppercase label at `--fs-label`. This is the only
 recurring ornament in the system, and it does the work that borders and flourishes would
 otherwise do.
 
@@ -227,7 +238,7 @@ the image itself. A card that needs a box has a layout problem.
 
 ### Occasion chips
 
-Large, generous tap targets with hairline borders that fill with clay on hover/selection.
+Large, generous tap targets with hairline borders; near black on hover, filled black when selected.
 They are questions, not filters, so they are sized to be read, not scanned.
 
 ### Icons
@@ -267,7 +278,7 @@ The thread is the signature — and it is structural, not only a moment. **The S
 Thread** is a very thin curved line that travels through the interface wherever a
 journey is shown: connecting the three steps of the model on the homepage, and later
 the app's order journey. It represents story → design → garment. Rules: 1.5px stroke in
-terracotta, at most one thread per screen, about a second and a half of drawing when
+near black, at most one thread per screen, about a second and a half of drawing when
 its section reveals; under `prefers-reduced-motion` — and without JavaScript — it is
 simply there, already drawn. Anything beyond the thread and the three moments above is
 gimmick, not language.
@@ -289,9 +300,14 @@ look inevitable.
   just the finished clothes.**
 - **The four-frame transformation** — Idea → Design → Creation → Final — is the signature.
   Where all four frames exist for a commission, they are shown together.
-- **Placeholders** (`.ph`) are warm-toned tinted blocks with a caption naming exactly what
-  photograph belongs there. Never a grey box, never a stock photo. A placeholder that names
-  its intent is a brief; a grey box is a hole.
+- **Photography provides 100% of the colour.** The homepage is white ground, black
+  typography, and then a huge photograph of a woman in a custom SYS garment — deep
+  emerald, crimson, gold, pink. The photograph is the visual event; the UI never is.
+- **Placeholders** (`.ph`) are an almost-invisible light-grey grid on white — graph
+  paper awaiting the sketch, fabric or photograph — with a caption naming exactly the
+  shot that belongs there. Never a flat grey box, never a stock photo. The grid itself
+  can become a recognisable SYS visual language: sketch, fabric, photograph, finished
+  garment placed on graph paper.
 
 ---
 
@@ -299,14 +315,13 @@ look inevitable.
 
 Non-negotiable, and mostly free if handled at the token level.
 
-- All text meets WCAG AA (4.5:1). Measured against `--sys-paper` / `--sys-paper-deep`:
-  `--sys-ink` 14.2 / 11.8, `--sys-ink-soft` 7.5 / 6.3, `--sys-ink-faint` 5.7 / 4.8,
-  `--sys-clay-text` 5.5 / 4.5, `--sys-error` 5.8 / 4.8, `--sys-ok` 5.2 on ivory.
-  Button text (`#FFF9F5` on `--sys-clay-fill`) is 4.5, on hover 5.7.
-  On `--sys-night`: paper 15.8+, the rebound `--sys-clay-text` (#C07A5C) 4.98.
-- `--sys-clay` and `--sys-brass` are never used for text — see §2. As non-text UI
-  (focus rings, active borders) terracotta measures 3.5:1, above the 3:1 minimum.
-- Every interactive element has a visible `:focus-visible` ring in clay with a 2px offset.
+- All text meets WCAG AA (4.5:1) with room to spare — a monochrome system makes this
+  nearly free. Measured on white / soft grey: `--sys-ink` 18.9 / 17.2,
+  `--sys-ink-soft` 10.9 / 9.9, `--sys-ink-faint` 5.7 / 5.3. White on the primary
+  button and on `--sys-night` is 18.9:1; the night-rebound faint (`#9A9A9A`) is 6.4:1.
+- Because status never relies on colour (§2), the system is colour-blind-safe by
+  construction.
+- Every interactive element has a visible `:focus-visible` ring in near black with a 2px offset.
 - The guided flow is fully keyboard-operable; each step moves focus to its heading.
 - Uploads, chips and sliders carry real labels — no icon-only controls.
 - Skip link on every page, with `scroll-margin-top` on jump targets so the sticky header
@@ -321,5 +336,5 @@ Non-negotiable, and mostly free if handled at the token level.
 2. Choose an asymmetric grid before choosing a symmetric one.
 3. Add vertical space before adding a divider.
 4. Use exactly one `.btn--primary`, and make it *Start Your Story*.
-5. Check the clay budget — under ~5% of the page area.
+5. Check the black budget — ~7% of the page; the rest is white, grey and photography.
 6. Read the copy aloud. If it sounds like a shop, rewrite it.

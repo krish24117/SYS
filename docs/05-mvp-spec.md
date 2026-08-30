@@ -286,7 +286,10 @@ A large visual drop zone — *Show us what inspires you* / *Drag images here* /
 Photos · Sketches · Fabric.
 
 Uploads land in a masonry **Storyboard**: inspiration photos, fabric, colour, texture,
-silhouette, and the designer's handwritten-style note, mixed. Above it, the read-back:
+silhouette, and the designer's handwritten-style note, mixed. This is the one place
+colour lives in the app — including a palette extracted from the customer's own
+inspiration images. The interface stays black, white and grey; the Story does not.
+*SYS is monochrome. Your story is not.* Above it, the read-back:
 
 ```
 Your Storyboard
@@ -332,11 +335,13 @@ A horizontal story progression, the current stage emphasised, the Story Thread
 running through it:
 
 ```
-IDEA → DESIGN → FIT → CREATE → WEAR
+IDEA → DESIGN → FIT → CREATION → WEAR
 ```
 
 (The display form of the §4.3 arc: Inspiration folds into Idea, Craft shows as
-Create.) Beneath it, status in words, with a real date:
+Creation.) Stage state is typographic, never chromatic: current stage black,
+completed dark grey, upcoming light grey — no coloured dots. Beneath it, status in
+words, with a real date:
 
 > Design approved. Your garment is now moving into production.
 > Estimated completion: 12 Sept
