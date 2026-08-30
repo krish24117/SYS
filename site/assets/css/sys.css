@@ -241,25 +241,36 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .btn:active { transform: translateY(1px); }
 
 .btn--primary { background: var(--sys-ink); color: #FFFFFF; }
-.btn--primary:hover { background: var(--sys-white); color: var(--sys-ink); border-color: var(--sys-ink); }
 .btn--primary::after { content: "→"; transition: transform var(--t-fast); }
-.btn--primary:hover::after { transform: translateX(4px); }
 /* On dark sections the primary is white — a black button melts into the ground */
 .section--night .btn--primary { background: var(--sys-white); color: var(--sys-ink); }
-.section--night .btn--primary:hover {
-  background: transparent; color: #FFFFFF; border-color: #FFFFFF;
-}
 
 .btn--ghost { border-color: var(--sys-ink); color: var(--sys-ink); background: var(--sys-white); }
-.btn--ghost:hover { background: var(--sys-ink); color: #FFFFFF; }
 
 .section--night .btn--ghost {
   background: transparent;                    /* the night ground shows through */
   border-color: rgba(255, 255, 255, 0.4); color: #FFFFFF;
 }
-.section--night .btn--ghost:hover { background: #FFFFFF; color: var(--sys-ink); border-color: #FFFFFF; }
 
 .btn--sm { padding: 0.55rem var(--s-3); font-size: 0.6875rem; letter-spacing: 0.12em; }
+
+/* Hover applies only where hover exists. On touch, iOS keeps :hover stuck
+   after a tap, which left buttons frozen in their inverted state. */
+@media (hover: hover) {
+  .btn--primary:hover { background: var(--sys-white); color: var(--sys-ink); border-color: var(--sys-ink); }
+  .btn--primary:hover::after { transform: translateX(4px); }
+  .section--night .btn--primary:hover { background: transparent; color: #FFFFFF; border-color: #FFFFFF; }
+  .btn--ghost:hover { background: var(--sys-ink); color: #FFFFFF; }
+  .section--night .btn--ghost:hover { background: #FFFFFF; color: var(--sys-ink); border-color: #FFFFFF; }
+  .chip:hover { border-color: var(--sys-ink); color: var(--sys-ink); transform: translateY(-2px); }
+  .ph:hover .plate { transform: scale(1.03); }
+}
+
+/* Narrow screens: tighter buttons so BACK / SKIP / CONTINUE fit side by side,
+   and the row wraps rather than ever clipping the primary action. */
+@media (max-width: 520px) {
+  .btn { padding-inline: 1.05rem; letter-spacing: 0.1em; }
+}
 .btn--block { width: 100%; }
 
 .btn-row { display: flex; flex-wrap: wrap; gap: var(--s-3); }
@@ -396,7 +407,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .reveal[data-shown="true"] .plate,
 [data-thread] .plate,
 html:not(.js) .plate { stroke-dashoffset: 0; }
-.ph:hover .plate { transform: scale(1.03); }
+
 /* Imagery geometry — the curve belongs to imagery only; the interface stays
    rectangular. Portrait frames take the atelier arch (the salon mirror, the
    fitting-room doorway); the four process frames are full circles — the
@@ -457,7 +468,6 @@ html:not(.js) .plate { stroke-dashoffset: 0; }
   transition: border-color var(--t-fast), background var(--t-fast),
               color var(--t-fast), transform var(--t-fast);
 }
-.chip:hover { border-color: var(--sys-ink); color: var(--sys-ink); transform: translateY(-2px); }
 .chip[aria-pressed="true"], .chip[data-selected="true"] {
   background: var(--sys-ink); border-color: var(--sys-ink); color: #FFFFFF;
 }
@@ -610,7 +620,7 @@ html:not(.js) .plate { stroke-dashoffset: 0; }
   margin-bottom: var(--s-3);
 }
 .flow__nav {
-  display: flex; align-items: center; justify-content: space-between; gap: var(--s-3);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3);
   margin-top: var(--s-7); padding-top: var(--s-4);
   border-top: 1px solid var(--sys-line);
 }
