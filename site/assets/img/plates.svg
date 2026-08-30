@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- SYS atelier plates — fine line art standing in for photography.
+       Every path carries pathLength="1" and no stroke attributes, so the
+       host page controls stroke, weight, and the draw-on-reveal via
+       inherited dash properties. Each data-shot attribute in the HTML
+       remains the shoot brief for the photograph that replaces the plate. -->
+
+  <!-- A gown, front elevation — construction lines only -->
+  <symbol id="plate-gown" viewBox="0 0 200 260">
+    <path pathLength="1" d="M72 46 Q100 60 128 46"/>
+    <path pathLength="1" d="M72 46 C64 78 67 98 79 114"/>
+    <path pathLength="1" d="M128 46 C136 78 133 98 121 114"/>
+    <path pathLength="1" d="M79 114 Q100 123 121 114"/>
+    <path pathLength="1" d="M79 114 C58 158 42 200 38 236"/>
+    <path pathLength="1" d="M121 114 C142 158 158 200 162 236"/>
+    <path pathLength="1" d="M38 236 Q100 252 162 236"/>
+    <path pathLength="1" d="M100 123 L100 244"/>
+  </symbol>
+
+  <!-- A bodice pattern block — dart, armhole, grain line -->
+  <symbol id="plate-bodice" viewBox="0 0 200 260">
+    <path pathLength="1" d="M58 42 L142 42 L142 214 L58 214 Z"/>
+    <path pathLength="1" d="M142 42 C118 58 112 84 116 112"/>
+    <path pathLength="1" d="M100 214 L92 152"/>
+    <path pathLength="1" d="M100 214 L108 152"/>
+    <path pathLength="1" d="M74 70 L74 186"/>
+    <path pathLength="1" d="M70 76 L74 70 L78 76"/>
+    <path pathLength="1" d="M70 180 L74 186 L78 180"/>
+    <path pathLength="1" d="M58 128 L64 128"/>
+    <path pathLength="1" d="M136 128 L142 128"/>
+  </symbol>
+
+  <!-- Sketch fragment — a designer's loose croquis strokes -->
+  <symbol id="plate-sketch" viewBox="0 0 200 260">
+    <path pathLength="1" d="M84 44 C72 88 88 122 76 166"/>
+    <path pathLength="1" d="M118 44 C130 88 114 122 126 166"/>
+    <path pathLength="1" d="M76 166 C64 196 58 214 54 228"/>
+    <path pathLength="1" d="M126 166 C138 196 144 214 148 228"/>
+    <path pathLength="1" d="M54 228 Q101 244 148 228"/>
+    <path pathLength="1" d="M88 60 Q101 68 114 60"/>
+    <path pathLength="1" d="M64 210 Q80 202 84 188"/>
+  </symbol>
+
+  <!-- Seam and running stitch, with the needle still in the cloth -->
+  <symbol id="plate-stitch" viewBox="0 0 200 260">
+    <path pathLength="1" d="M28 116 C68 92 132 140 172 114"/>
+    <path pathLength="1" d="M28 160 C68 138 132 184 172 158"/>
+    <path pathLength="1" d="M42 138 L56 136"/>
+    <path pathLength="1" d="M68 136 L82 135"/>
+    <path pathLength="1" d="M94 136 L108 137"/>
+    <path pathLength="1" d="M120 138 L134 139"/>
+    <path pathLength="1" d="M146 138 L158 137"/>
+    <path pathLength="1" d="M158 137 C170 122 178 108 184 92"/>
+    <path pathLength="1" d="M182 98 C179 96 178 93 180 90 C182 88 185 89 186 92"/>
+  </symbol>
+
+  <!-- Drape study — cloth falling from a fold -->
+  <symbol id="plate-drape" viewBox="0 0 200 260">
+    <path pathLength="1" d="M44 42 Q100 56 156 42"/>
+    <path pathLength="1" d="M58 46 C52 118 66 178 54 228"/>
+    <path pathLength="1" d="M88 52 C82 122 98 180 86 228"/>
+    <path pathLength="1" d="M118 52 C114 122 128 180 118 228"/>
+    <path pathLength="1" d="M148 46 C144 118 154 178 144 228"/>
+    <path pathLength="1" d="M54 228 Q100 240 144 228"/>
+  </symbol>
+
+  <!-- The designer's tools — a french curve over a measure -->
+  <symbol id="plate-profile" viewBox="0 0 200 260">
+    <path pathLength="1" d="M64 54 C132 46 156 90 124 128 C102 152 72 150 66 190 C63 212 78 228 100 226"/>
+    <path pathLength="1" d="M88 92 C112 88 122 104 110 118"/>
+    <path pathLength="1" d="M36 244 L164 244"/>
+    <path pathLength="1" d="M52 244 L52 236"/>
+    <path pathLength="1" d="M84 244 L84 236"/>
+    <path pathLength="1" d="M116 244 L116 236"/>
+    <path pathLength="1" d="M148 244 L148 236"/>
+  </symbol>
+
+  <!-- Thread leaving the spool -->
+  <symbol id="plate-spool" viewBox="0 0 200 260">
+    <path pathLength="1" d="M74 66 Q100 56 126 66"/>
+    <path pathLength="1" d="M74 76 Q100 86 126 76"/>
+    <path pathLength="1" d="M74 71 L74 156"/>
+    <path pathLength="1" d="M126 71 L126 156"/>
+    <path pathLength="1" d="M74 156 Q100 168 126 156"/>
+    <path pathLength="1" d="M78 100 Q100 108 122 100"/>
+    <path pathLength="1" d="M78 124 Q100 132 122 124"/>
+    <path pathLength="1" d="M126 148 C164 158 156 196 108 206 C66 214 74 236 118 234"/>
+  </symbol>
+</svg>

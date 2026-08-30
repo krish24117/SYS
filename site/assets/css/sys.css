@@ -12,15 +12,15 @@
   /* Colour — Monochrome Luxury. No brown, no gold, no accent colour.
      The photography, fabrics and garments themselves are the colour.
      Ratio discipline: ~90% white, 7% black, 3% grey hierarchy. */
-  --sys-paper:       #FFFFFF;   /* Pure White — the ground */
-  --sys-paper-deep:  #F5F5F3;   /* Soft Grey — secondary surfaces */
-  --sys-ink:         #111111;   /* Near Black — primary text, primary button, dark
-                                   sections. 18.9:1 on white */
-  --sys-ink-soft:    #3E3E3C;   /* dark grey — secondary information, 10.9:1 */
-  --sys-ink-faint:   #666666;   /* Mid Grey — descriptions, captions, numbers.
-                                   5.7:1 white, 5.3:1 soft grey */
-  --sys-line:        #D9D9D6;   /* Light Grey — borders, upcoming states */
-  --sys-night:       #111111;   /* dark sections are the same near black */
+  --sys-paper:       #FAFAF8;   /* Soft White — the page ground */
+  --sys-white:       #FFFFFF;   /* Pure White — header, cards, inputs */
+  --sys-paper-deep:  #F2F2F0;   /* Very Light Grey — secondary surfaces */
+  --sys-ink:         #111111;   /* Black — 18.1:1 on the ground */
+  --sys-ink-soft:    #242424;   /* Graphite — secondary information, 14.9:1 */
+  --sys-ink-faint:   #6B6B6B;   /* Mid Grey — descriptions, captions.
+                                   5.1:1 soft white, 4.8:1 very light grey */
+  --sys-line:        #D8D8D5;   /* Light Grey — borders, upcoming states */
+  --sys-night:       #111111;   /* dark sections are the same black */
 
   --radius: 2px;                /* couture houses run sharp, not rounded */
 
@@ -46,9 +46,11 @@
   --measure: 62ch;
   --measure-lead: 46ch;
 
-  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
-  --t-fast: 160ms var(--ease);
-  --t-slow: 400ms var(--ease);
+  /* Motion language: slow, cinematic, precise. Nothing bounces. */
+  --ease: cubic-bezier(0.22, 0.61, 0.21, 1);
+  --t-fast: 350ms var(--ease);     /* hovers, presses */
+  --t-slow: 800ms var(--ease);     /* entrances, reveals */
+  --t-draw: 1800ms var(--ease);    /* line drawing */
 }
 
 /* --------------------------------------------------------------------------
@@ -182,8 +184,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
   font-weight: 500;
 }
 
-.hero-title    { font-size: var(--fs-hero);    letter-spacing: -0.02em; line-height: 0.98; }
-.display-title { font-size: var(--fs-display); letter-spacing: -0.018em; line-height: 1.02; }
+.hero-title    { font-size: var(--fs-hero);    letter-spacing: -0.02em; line-height: 1.05; }
+.display-title { font-size: var(--fs-display); letter-spacing: -0.018em; line-height: 1.08; }
 .section-title { font-size: var(--fs-title);   line-height: 1.12; }
 
 .lead {
@@ -239,10 +241,16 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .btn:active { transform: translateY(1px); }
 
 .btn--primary { background: var(--sys-ink); color: #FFFFFF; }
-.btn--primary:hover { background: #000000; }
-.btn--primary::after { content: "→"; }   /* gap on .btn spaces it */
+.btn--primary:hover { background: var(--sys-white); color: var(--sys-ink); border-color: var(--sys-ink); }
+.btn--primary::after { content: "→"; transition: transform var(--t-fast); }
+.btn--primary:hover::after { transform: translateX(4px); }
+/* On dark sections the primary is white — a black button melts into the ground */
+.section--night .btn--primary { background: var(--sys-white); color: var(--sys-ink); }
+.section--night .btn--primary:hover {
+  background: transparent; color: #FFFFFF; border-color: #FFFFFF;
+}
 
-.btn--ghost { border-color: var(--sys-ink); color: var(--sys-ink); background: var(--sys-paper); }
+.btn--ghost { border-color: var(--sys-ink); color: var(--sys-ink); background: var(--sys-white); }
 .btn--ghost:hover { background: var(--sys-ink); color: #FFFFFF; }
 
 .section--night .btn--ghost {
@@ -281,6 +289,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
   backdrop-filter: saturate(140%) blur(10px);
   border-bottom: 1px solid var(--sys-line);   /* very thin, always there, no shadow */
 }
+/* Compacts after scrolling — an elegant settling, not a jump */
+.site-header__inner { transition: min-height var(--t-fast); }
+.site-header[data-scrolled="true"] .site-header__inner { min-height: 58px; }
 
 .site-header__inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -353,33 +364,39 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 
 /* --------------------------------------------------------------------------
-   7. Placeholders — graph paper awaiting the photograph; a named brief
+   7. Plates — atelier line art in place of photography.
+   Pattern-paper ground, one fine construction drawing, no labels on the
+   surface. Each element's data-shot attribute remains the shoot brief for
+   the photograph that will eventually replace the plate.
    -------------------------------------------------------------------------- */
 
 .ph {
   position: relative;
-  display: flex; align-items: flex-end;
-  background-color: var(--sys-paper);
-  background-image:
-    repeating-linear-gradient(90deg, rgba(17, 17, 17, 0.045) 0 1px, transparent 1px 24px),
-    repeating-linear-gradient(0deg,  rgba(17, 17, 17, 0.045) 0 1px, transparent 1px 24px);
-  overflow: hidden;              /* borderless — photography is never framed in a box */
-}
-.ph::before {
-  content: "✦";                  /* the story mark holds the plate until the photograph */
-  position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.25rem; color: rgba(17, 17, 17, 0.14);
+  background-color: var(--sys-white);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(17, 17, 17, 0.035) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg,  rgba(17, 17, 17, 0.035) 0 1px, transparent 1px 28px);
+  overflow: hidden;              /* borderless — imagery is never framed in a box */
 }
-.ph::after {
-  content: attr(data-shot);
-  position: relative;
-  display: block; width: 100%;
-  padding: var(--s-3);
-  font-size: var(--fs-label); letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--sys-ink-faint);
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0));
+.plate {
+  width: 62%; height: 78%; max-width: 340px;
+  color: var(--sys-ink-soft);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* pathLength="1" on every symbol path lets these dash properties inherit
+     down, so the whole drawing draws itself when its section reveals */
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset var(--t-draw) 200ms, transform var(--t-slow);
 }
+.reveal[data-shown="true"] .plate,
+[data-thread] .plate,
+html:not(.js) .plate { stroke-dashoffset: 0; }
+.ph:hover .plate { transform: scale(1.03); }
 .ph--portrait { aspect-ratio: 4 / 5; }
 .ph--process  { aspect-ratio: 3 / 2; }
 .ph--square   { aspect-ratio: 1 / 1; }
@@ -428,13 +445,14 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .chip {
   display: inline-flex; align-items: center;
-  padding: 0.8rem var(--s-4);
+  padding: 1rem var(--s-4);
   border: 1px solid var(--sys-line); border-radius: var(--radius);
   background: none; text-decoration: none; cursor: pointer;
-  font-size: var(--fs-small);
-  transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
+  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: border-color var(--t-fast), background var(--t-fast),
+              color var(--t-fast), transform var(--t-fast);
 }
-.chip:hover { border-color: var(--sys-ink); color: var(--sys-ink); }
+.chip:hover { border-color: var(--sys-ink); color: var(--sys-ink); transform: translateY(-2px); }
 .chip[aria-pressed="true"], .chip[data-selected="true"] {
   background: var(--sys-ink); border-color: var(--sys-ink); color: #FFFFFF;
 }
@@ -459,16 +477,12 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .transform__caption { margin-top: var(--s-3); font-size: var(--fs-small); }
 
 .section--night .ph {
-  background-color: #1A1A1A;
+  background-color: #161616;
   background-image:
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 24px),
-    repeating-linear-gradient(0deg,  rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 24px);
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg,  rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 28px);
 }
-.section--night .ph::before { color: rgba(255, 255, 255, 0.18); }
-.section--night .ph::after {
-  color: rgba(255, 255, 255, 0.6);
-  background: linear-gradient(to top, rgba(17, 17, 17, 0.94), rgba(17, 17, 17, 0));
-}
+.section--night .plate { color: rgba(255, 255, 255, 0.75); }
 .section--night .transform__caption { color: rgba(255, 255, 255, 0.72); }
 .section--night .rule { background: rgba(255, 255, 255, 0.16); }
 
@@ -552,7 +566,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .input, .textarea, .select {
   width: 100%;
   padding: 0.9rem var(--s-3);
-  background: #fff;
+  background: var(--sys-white);
   border: 1px solid var(--sys-line);
   border-radius: var(--radius);
   transition: border-color var(--t-fast);
@@ -638,7 +652,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
    -------------------------------------------------------------------------- */
 
 .reveal { opacity: 1; }               /* visible by default; JS opts in */
-.js .reveal { opacity: 0; transform: translateY(14px); }
+.js .reveal { opacity: 0; transform: translateY(22px); }
 .js .reveal[data-shown="true"] {
   opacity: 1; transform: none;
   transition: opacity var(--t-slow), transform var(--t-slow);
@@ -650,6 +664,16 @@ button, input, textarea, select { font: inherit; color: inherit; }
   }
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Hero entrance — staggered, slow, editorial. Pure CSS: runs without JS and
+   collapses to instant under prefers-reduced-motion via the global rule. */
+@keyframes sys-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.hero-rv   { animation: sys-rise 900ms var(--ease) both; }
+.hero-rv-1 { animation-delay: 100ms; }
+.hero-rv-2 { animation-delay: 280ms; }
+.hero-rv-3 { animation-delay: 460ms; }
+.hero-rv-4 { animation-delay: 640ms; }
+.hero-rv-5 { animation-delay: 820ms; }
 
 /* --------------------------------------------------------------------------
    16b. The thread — when a story begins, a thin thread draws itself across
@@ -672,7 +696,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
    a journey (homepage model, order tracking). It draws when its section reveals,
    and is simply there when JavaScript is not. */
 .thread--journey { height: 56px; margin-top: var(--s-7); }
-.reveal[data-shown="true"] .thread path { stroke-dashoffset: 0; transition-duration: 1600ms; }
+.reveal[data-shown="true"] .thread path { stroke-dashoffset: 0; transition-duration: 2000ms; }
 html:not(.js) .thread path { stroke-dashoffset: 0; }
 /* Under reduced motion the global rule zeroes the transition, so the thread
    is simply there, already drawn, the moment the confirmation appears. */

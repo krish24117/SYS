@@ -244,6 +244,9 @@ Design approval pending
 
 One card = who · which story · its value · the one thing blocking it · one action.
 
+The studio keeps the SYS visual language throughout — a premium atelier management
+system, never a generic enterprise dashboard.
+
 ### 5.2 Story detail
 
 One screen holding everything, so she never has to reconstruct context:
@@ -350,6 +353,18 @@ Silhouette: Structured · Fabric: Silk · Detail: Minimal handwork
 
 Three directions, named like editorial spreads, each with its board.
 
+Drag-to-rearrange belongs here: the board should feel like the designer's physical
+desk translated to digital, with subtle paper and pattern-making graphics in the
+ground.
+
+### 9.35 The design reveal
+
+When the designer submits a concept, the reveal is cinematic — never a status flip to
+"DESIGN APPROVED". A full-screen **YOUR DESIGN** moment: large visual, then Concept /
+Silhouette / Fabric / Details / the designer's note, then `APPROVE DESIGN →`. The
+image may reveal through a mask, a sketch-to-image transition, or the thread drawing
+its outline.
+
 ### 9.4 Designer notes
 
 The emotional core. Set in the display serif's italic — never an actual script font —
@@ -403,6 +418,10 @@ Your Style   Contemporary · Elegant · Minimal
 Your Fit     your saved measurements
 For You      suggested designs from your previous stories
 ```
+
+Authenticated navigation: **Home · My Stories · Create · Messages · Profile.**
+The dashboard stays editorial — a story card is an image, a stage, and one next
+action, never a data table.
 
 ### 9.8 Designer dashboard header
 

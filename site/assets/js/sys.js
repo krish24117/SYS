@@ -45,8 +45,15 @@
     var header = document.querySelector('.site-header');
     if (!header) return;
 
+    /* Compaction uses a wide threshold with hysteresis so the header never
+       flaps at the boundary — the height change shifts layout, and flapping
+       would make the whole page tremble on slow scrolls. */
+    var compact = false;
     var onScroll = function () {
-      header.setAttribute('data-scrolled', window.scrollY > 8 ? 'true' : 'false');
+      var y = window.scrollY;
+      if (!compact && y > 96) compact = true;
+      else if (compact && y < 40) compact = false;
+      header.setAttribute('data-scrolled', String(compact));
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });

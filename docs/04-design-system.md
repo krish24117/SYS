@@ -67,15 +67,16 @@ typical Indian boutique website.
 fabrics and garments themselves become the colour.
 
 ```
---sys-paper        #FFFFFF   Pure White — the ground
---sys-paper-deep   #F5F5F3   Soft Grey — secondary surfaces
---sys-ink          #111111   Near Black — primary text, primary button, dark
-                             sections (18.9:1 on white)
---sys-ink-soft     #3E3E3C   dark grey — secondary information (10.9:1)
---sys-ink-faint    #666666   Mid Grey — descriptions, captions, numbers
-                             (5.7:1 white, 5.3:1 soft grey)
---sys-line         #D9D9D6   Light Grey — borders, upcoming states
---sys-night        #111111   dark sections are the same near black
+--sys-paper        #FAFAF8   Soft White — the page ground
+--sys-white        #FFFFFF   Pure White — header, cards, inputs, plates
+--sys-paper-deep   #F2F2F0   Very Light Grey — secondary surfaces
+--sys-ink          #111111   Black — text, primary button, dark sections
+                             (18.1:1 on the ground)
+--sys-ink-soft     #242424   Graphite — secondary information (14.9:1)
+--sys-ink-faint    #6B6B6B   Mid Grey — descriptions, captions
+                             (5.1:1 soft white, 4.8:1 very light grey)
+--sys-line         #D8D8D5   Light Grey — borders, upcoming states
+--sys-night        #111111   dark sections are the same black
 ```
 
 **The ratio discipline: ~90% white / 7% black / 3% grey hierarchy** — and real fashion
@@ -93,10 +94,10 @@ international, and it will never look like a typical Indian boutique website.
 | Level | Value | Carries |
 | --- | --- | --- |
 | Black | `#111111` | Important information |
-| Dark grey | `#3E3E3C` | Secondary information |
-| Mid grey | `#666666` | Descriptions |
-| Light grey | `#D9D9D6` / `#F5F5F3` | Borders, backgrounds |
-| White | `#FFFFFF` | Space |
+| Graphite | `#242424` | Secondary information |
+| Mid grey | `#6B6B6B` | Descriptions |
+| Light grey | `#D8D8D5` / `#F2F2F0` | Borders, backgrounds |
+| White | `#FFFFFF` / `#FAFAF8` | Space |
 
 Never five random greys — every grey on a page must be one of these, doing that job.
 
@@ -258,9 +259,21 @@ decorate; this set labels.
 
 Restrained and functional.
 
-- Transitions: `160ms` for hover/press, `400ms cubic-bezier(.2,.7,.3,1)` for entrances.
-- One entrance effect only: a short fade-and-rise (`14px`) as sections enter the viewport,
+The motion language is slow, cinematic, precise, restrained. Nothing bounces; nothing
+feels like a SaaS animation. Motion communicates craftsmanship.
+
+- Timing tokens: `--t-fast` 350ms (hovers, presses), `--t-slow` 800ms (entrances,
+  reveals), `--t-draw` 1800ms (line drawing), all on
+  `cubic-bezier(.22,.61,.21,1)`.
+- The hero enters as a staggered editorial sequence — eyebrow, statement, standfirst,
+  actions, attribution — pure CSS, ~100–820ms delays, so it runs without JavaScript.
+- One scroll entrance only: a fade-and-rise (`22px`) as sections enter the viewport,
   driven by `IntersectionObserver`.
+- Plates and threads draw themselves (`stroke-dashoffset`) when their section reveals.
+- The primary button inverts on hover and its arrow moves 4px — a tiny controlled
+  movement, never a bounce.
+- The header compacts after ~96px of scroll with hysteresis, so it settles rather
+  than flaps.
 - No parallax, no counters, no carousels that move on their own, no scroll-jacking.
 - **`prefers-reduced-motion: reduce` disables all of it.** Content is visible by default and
   animation is opt-in via a class, so JavaScript failing never leaves a blank page.
@@ -303,11 +316,14 @@ look inevitable.
 - **Photography provides 100% of the colour.** The homepage is white ground, black
   typography, and then a huge photograph of a woman in a custom SYS garment — deep
   emerald, crimson, gold, pink. The photograph is the visual event; the UI never is.
-- **Placeholders** (`.ph`) are an almost-invisible light-grey grid on white — graph
-  paper awaiting the sketch, fabric or photograph — with a caption naming exactly the
-  shot that belongs there. Never a flat grey box, never a stock photo. The grid itself
-  can become a recognisable SYS visual language: sketch, fabric, photograph, finished
-  garment placed on graph paper.
+- **Plates** (`.ph` + `.plate`) stand in for photography until it exists: fine
+  1.1px construction line art — a gown elevation, a bodice pattern block with dart and
+  grain line, a drape study, a running stitch with the needle still in the cloth, the
+  designer's french curve over a measure, thread leaving a spool — drawn on
+  pattern-paper grids. Each drawing draws itself as its section reveals. The sprite
+  lives in `site/assets/img/plates.svg`; each element's `data-shot` attribute remains
+  the shoot brief for the photograph that will replace it. Never a flat grey box,
+  never a labelled empty frame, never a stock photo.
 
 ---
 

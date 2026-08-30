@@ -161,7 +161,7 @@ a fallback, never the primary path, and never more than a handful of fields.
 ### B.1 Customer navigation
 
 ```
-Home | Create | My Stories | Orders | Profile
+Home | My Stories | Create | Messages | Profile
 ```
 
 #### Home — "What are you creating?"
