@@ -37,8 +37,10 @@ Warm paper, deep ink, and one restrained accent. Nothing else.
 --sys-paper-deep   #F1EBE1   sections that need separation without a border
 --sys-ink          #1F1B16   near-black, warm-shifted — body and headings
 --sys-ink-soft     #554D43   secondary text
---sys-ink-faint    #8B8177   captions, metadata, step numbers
---sys-clay         #A85F42   the accent — terracotta, not gold, not maroon
+--sys-ink-faint    #726860   captions, metadata, eyebrow labels
+--sys-clay         #A85F42   the accent — terracotta, not gold, not maroon.
+                             FILLS AND RULES ONLY (4.49:1 as text — fails AA)
+--sys-clay-text    #9A5539   clay used as text. 5.26:1 on paper, 4.75:1 on deep
 --sys-clay-deep    #8A4B33   accent hover / pressed
 --sys-sage         #6E7A63   the one supporting hue, used sparingly
 --sys-line         #E2D9CC   hairlines
@@ -53,9 +55,17 @@ pigment — clay, earth, dye — rather than as metal. Gold says "expensive". Cl
 labels, and the occasional editorial flourish. It never fills a large area. If a page has
 more than roughly 5% clay by area, it has too much.
 
+**Two clays, and the difference matters.** `--sys-clay` is the brand fill: button
+backgrounds, the eyebrow rule, the progress bar. As *text* it measures 4.49:1 on paper and
+4.04:1 on `--sys-paper-deep`, so it fails AA at body sizes — every clay-coloured word uses
+`--sys-clay-text` instead. The two are close enough to read as one accent and far enough
+apart to be legible.
+
 **Dark sections.** `--sys-night` is used for at most two full-bleed moments per page — the
 transformation strip and the closing CTA are the natural candidates. Inversion is a pacing
-device, not a theme.
+device, not a theme. `.section--night` rebinds `--sys-clay-text` to `#C07A5C` (4.98:1 on
+night), so any component using that token adapts through the cascade without a per-component
+override.
 
 ---
 
@@ -196,12 +206,16 @@ look inevitable.
 
 Non-negotiable, and mostly free if handled at the token level.
 
-- All body text meets WCAG AA against paper. `--sys-ink-faint` is used only at
-  `--fs-label` size and above 4.5:1.
+- All text meets WCAG AA (4.5:1). Measured against `--sys-paper` / `--sys-paper-deep`:
+  `--sys-ink` 16.0 / 15.1, `--sys-ink-soft` 7.8 / 7.0, `--sys-ink-faint` 5.1 / 4.6,
+  `--sys-clay-text` 5.3 / 4.8. Button text (`#FFF9F5` on `--sys-clay`) is 4.6.
+  On `--sys-night`: paper 15.8, `--sys-clay-text` 4.98.
+- `--sys-clay` itself is never used for text — see §2.
 - Every interactive element has a visible `:focus-visible` ring in clay with a 2px offset.
 - The guided flow is fully keyboard-operable; each step moves focus to its heading.
 - Uploads, chips and sliders carry real labels — no icon-only controls.
-- Skip link on every page.
+- Skip link on every page, with `scroll-margin-top` on jump targets so the sticky header
+  never covers the content that was jumped to.
 - Reduced-motion honoured throughout.
 
 ---

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start Your Story — SYS</title>
+<meta name="description" content="Six short questions. Two minutes. Then we'll put you in front of the designer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/sys.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="wordmark" href="index.html">
+      <span class="wordmark__mark">SYS</span>
+      <span class="wordmark__sub">Style Your Stories</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="stories.html">Stories</a>
+      <a href="bring-your-fabric.html">Bring Your Fabric</a>
+      <a href="collections.html">Collections</a>
+      <a href="designer.html">The Designer</a>
+      <a href="how-it-works.html">How It Works</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn--ghost btn--sm" href="#" data-wa>Talk to SYS</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Menu</button>
+    </div>
+  </div>
+  <div class="nav-panel wrap" id="nav-panel" hidden>
+    <a href="stories.html">Stories</a>
+    <a href="bring-your-fabric.html">Bring Your Fabric</a>
+    <a href="collections.html">Collections</a>
+    <a href="designer.html">The Designer</a>
+    <a href="how-it-works.html">How It Works</a>
+  </div>
+</header>
+
+<main id="main" class="section">
+  <div class="wrap">
+    <div class="flow">
+
+      <!-- Intro -->
+      <div class="flow__intro" id="flow-intro" style="margin-bottom: var(--s-7);">
+        <div class="eyebrow"><span class="eyebrow__text">Start your story</span></div>
+        <h1 class="display-title">Tell us your story.</h1>
+        <p class="lead" style="margin-top: var(--s-3);">
+          Six short questions. Two minutes. Then we'll put you in front of the designer.
+        </p>
+      </div>
+
+      <!-- Progress -->
+      <div class="flow__progress" id="flow-progress" role="progressbar"
+           aria-valuemin="1" aria-valuemax="6" aria-valuenow="1"
+           aria-label="Your story, step 1 of 6">
+        <span class="flow__dot" data-state="current"></span>
+        <span class="flow__dot"></span>
+        <span class="flow__dot"></span>
+        <span class="flow__dot"></span>
+        <span class="flow__dot"></span>
+        <span class="flow__dot"></span>
+      </div>
+
+      <form id="flow" novalidate>
+
+        <!-- 01 — Occasion -->
+        <section class="flow__step" data-step="1" data-active="true" tabindex="-1"
+                 aria-labelledby="q1">
+          <p class="flow__count">Question 01 of 06</p>
+          <h2 class="flow__question" id="q1">What are we creating today?</h2>
+          <p class="muted small" style="margin-bottom: var(--s-5);">
+            Choose whichever sounds most like you.
+          </p>
+
+          <div class="chips" data-group="occasion" data-mode="single">
+            <button class="chip" type="button" aria-pressed="false">My Wedding</button>
+            <button class="chip" type="button" aria-pressed="false">My Daughter's Wedding</button>
+            <button class="chip" type="button" aria-pressed="false">A Celebration</button>
+            <button class="chip" type="button" aria-pressed="false">A Party</button>
+            <button class="chip" type="button" aria-pressed="false">A Special Evening</button>
+            <button class="chip" type="button" aria-pressed="false">My First Saree</button>
+            <button class="chip" type="button" aria-pressed="false">Something Completely New</button>
+            <button class="chip" type="button" aria-pressed="false">I Have a Fabric</button>
+            <button class="chip" type="button" aria-pressed="false">I Have an Idea</button>
+            <button class="chip chip--quiet" type="button" aria-pressed="false">I Don't Know Yet</button>
+          </div>
+
+          <label class="field" style="margin-top: var(--s-5);">
+            <span class="field__label">Something else?</span>
+            <input class="input" type="text" name="occasionOther"
+                   placeholder="Tell us in your own words">
+          </label>
+        </section>
+
+        <!-- 02 — Brief -->
+        <section class="flow__step" data-step="2" tabindex="-1" aria-labelledby="q2">
+          <p class="flow__count">Question 02 of 06</p>
+          <h2 class="flow__question" id="q2">Tell us a little more.</h2>
+          <p class="muted small" style="margin-bottom: var(--s-5);">
+            Say it however you'd say it out loud. There's no right way.
+          </p>
+
+          <label class="field">
+            <span class="visually-hidden">Your story</span>
+            <textarea class="textarea" name="brief"
+              placeholder="My sister is getting married and I want something elegant but not too traditional."></textarea>
+          </label>
+        </section>
+
+        <!-- 03 — Inspiration -->
+        <section class="flow__step" data-step="3" tabindex="-1" aria-labelledby="q3">
+          <p class="flow__count">Question 03 of 06</p>
+          <h2 class="flow__question" id="q3">Show us what inspires you.</h2>
+          <p class="muted small" style="margin-bottom: var(--s-5);">
+            A Pinterest image, an Instagram screenshot, an outfit you already own, a
+            fabric, a celebrity look, or a rough sketch. Up to six.
+          </p>
+
+          <label class="uploads" id="uploads" for="files">
+            <span class="serif" style="font-size: 1.3rem; display: block;">Add your references</span>
+            <span class="small faint" style="display: block; margin-top: var(--s-2);">
+              Drag them here, or choose from your device
+            </span>
+            <input id="files" name="files" type="file" accept="image/*" multiple class="visually-hidden">
+          </label>
+
+          <div class="thumbs" id="thumbs"></div>
+
+          <p class="field__help" id="upload-note">
+            Nothing to show yet? That's fine — skip this step.
+          </p>
+        </section>
+
+        <!-- 04 — Style -->
+        <section class="flow__step" data-step="4" tabindex="-1" aria-labelledby="q4">
+          <p class="flow__count">Question 04 of 06</p>
+          <h2 class="flow__question" id="q4">What's your style?</h2>
+          <p class="muted small" style="margin-bottom: var(--s-5);">
+            Choose as many as feel right.
+          </p>
+
+          <div class="chips" data-group="style" data-mode="multi">
+            <button class="chip chip--wide" type="button" aria-pressed="false">Minimal</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">Elegant</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">Traditional</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">Contemporary</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">Dramatic</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">Romantic</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">Experimental</button>
+          </div>
+        </section>
+
+        <!-- 05 — Budget -->
+        <section class="flow__step" data-step="5" tabindex="-1" aria-labelledby="q5">
+          <p class="flow__count">Question 05 of 06</p>
+          <h2 class="flow__question" id="q5">What's your budget?</h2>
+          <p class="muted small" style="margin-bottom: var(--s-5);">
+            This tells us which fabrics and how much handwork we can design toward.
+            It is not a commitment.
+          </p>
+
+          <div class="chips" data-group="budget" data-mode="single">
+            <button class="chip chip--wide" type="button" aria-pressed="false">₹5,000 – 10,000</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">₹10,000 – 20,000</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">₹20,000 – 50,000</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">₹50,000+</button>
+          </div>
+        </section>
+
+        <!-- 06 — Timeline -->
+        <section class="flow__step" data-step="6" tabindex="-1" aria-labelledby="q6">
+          <p class="flow__count">Question 06 of 06</p>
+          <h2 class="flow__question" id="q6">When do you need it?</h2>
+          <p class="muted small" style="margin-bottom: var(--s-5);">
+            Custom garments generally need six to eight weeks. Tell us if yours is sooner
+            and we'll say honestly whether we can.
+          </p>
+
+          <div class="chips" data-group="timeline" data-mode="single">
+            <button class="chip chip--wide" type="button" aria-pressed="false">Within a month</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">1 – 3 months</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">3+ months</button>
+            <button class="chip chip--wide" type="button" aria-pressed="false">I'm not sure yet</button>
+          </div>
+        </section>
+
+        <!-- Finish — meet your designer -->
+        <section class="flow__step" data-step="7" tabindex="-1" aria-labelledby="q7">
+          <p class="flow__count">Your story</p>
+          <h2 class="flow__question" id="q7">Meet your designer.</h2>
+          <p class="muted" style="margin-bottom: var(--s-6);">
+            Your story is ready. Choose how you'd like to talk it through with
+            <span data-sys="designer">[Designer Name]</span>.
+          </p>
+
+          <div class="summary" id="summary"></div>
+
+          <div class="split split--even" style="margin-top: var(--s-6); gap: var(--s-4);">
+            <label class="field">
+              <span class="field__label">Your name</span>
+              <input class="input" type="text" name="name" autocomplete="name">
+            </label>
+            <label class="field">
+              <span class="field__label">Phone or WhatsApp</span>
+              <input class="input" type="tel" name="phone" autocomplete="tel">
+            </label>
+          </div>
+
+          <div class="btn-row" style="margin-top: var(--s-6);">
+            <a class="btn btn--primary" href="#" id="wa-finish">Continue on WhatsApp</a>
+            <button class="btn btn--ghost" type="button" data-book="video">Book a video consultation</button>
+            <button class="btn btn--ghost" type="button" data-book="studio">Book a studio visit</button>
+          </div>
+
+          <p class="field__help" style="margin-top: var(--s-4);">
+            Your references stay on this device until you send them — WhatsApp will ask you
+            to attach them, or bring them to your consultation.
+          </p>
+
+          <div id="booked" hidden style="margin-top: var(--s-6);">
+            <hr class="rule">
+            <h3 class="section-title" style="margin-top: var(--s-5);">Your story has begun.</h3>
+            <p class="muted" style="margin-top: var(--s-3);">
+              <span data-sys="designer">[Designer Name]</span> will read it herself and come
+              back to you within one working day.
+            </p>
+          </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="flow__nav" id="flow-nav">
+          <button class="btn btn--ghost" type="button" id="flow-back" hidden>Back</button>
+          <div style="display:flex; gap: var(--s-3); align-items:center; margin-left:auto;">
+            <button class="btn btn--ghost" type="button" id="flow-skip">Skip</button>
+            <button class="btn btn--primary" type="button" id="flow-next">Continue</button>
+          </div>
+        </div>
+
+      </form>
+
+      <p class="small faint" style="margin-top: var(--s-6);">
+        Would rather just talk? <a class="link" href="#" data-wa>Start on WhatsApp</a>
+      </p>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="margin-top:0; border:0; padding-top:0;">
+      <span>SYS · Style Your Stories</span>
+      <span>© <span data-year>2026</span> SYS · Made in <span data-sys="city">Hyderabad</span>, India</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/sys-config.js"></script>
+<script src="assets/js/sys.js"></script>
+<script src="assets/js/story-flow.js"></script>
+</body>
+</html>
