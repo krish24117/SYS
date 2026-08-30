@@ -9,27 +9,38 @@
    -------------------------------------------------------------------------- */
 
 :root {
-  /* Colour — warm paper, deep ink, one clay accent. Never gold, never maroon. */
-  --sys-paper:       #FAF7F2;
-  --sys-paper-deep:  #F1EBE1;
-  --sys-ink:         #1F1B16;
-  --sys-ink-soft:    #554D43;
-  --sys-ink-faint:   #726860;   /* 5.09:1 on paper, 4.58:1 on paper-deep */
-  --sys-clay:        #A85F42;   /* fills and rules only — 4.49:1 as text */
-  --sys-clay-text:   #9A5539;   /* clay as TEXT — 5.26:1 on paper, 4.75:1 on deep */
-  --sys-clay-deep:   #8A4B33;
-  --sys-sage:        #6E7A63;
-  --sys-line:        #E2D9CC;
+  /* Colour — Warm Ivory, Deep Charcoal, one Muted Terracotta accent.
+     Never gold, never maroon. Ratio discipline: ~80% neutral, 15% sand, 5% accent. */
+  --sys-paper:       #F7F3ED;   /* Warm Ivory — the ground */
+  --sys-paper-deep:  #E8DED1;   /* Soft Sand — cards, sections, subtle surfaces */
+  --sys-ink:         #242321;   /* Deep Charcoal — 14.2:1 on ivory */
+  --sys-ink-soft:    #554D43;   /* 7.5:1 ivory, 6.3:1 sand */
+  --sys-ink-faint:   #685E56;   /* 5.7:1 ivory, 4.8:1 sand */
+  --sys-clay:        #B56F5B;   /* Muted Terracotta — rules, highlights, active,
+                                   focus. Never text, never under white text
+                                   (3.5:1 as text — fails AA) */
+  --sys-clay-fill:   #A26351;   /* interactive fills — white text reads 4.5:1 */
+  --sys-clay-text:   #8B5546;   /* clay as TEXT — 5.5:1 ivory, 4.5:1 sand */
+  --sys-clay-deep:   #8D5646;   /* fill hover/pressed — 5.7:1 under white */
+  --sys-brass:       #A58A61;   /* Antique Brass — hairline details only, never text */
+  --sys-sage:        #6E7A63;   /* supporting hue, tints and fills */
+  --sys-ok:          #5E6A54;   /* success as text — 5.2:1 */
+  --sys-error:       #96473B;   /* Muted Brick — error as text — 5.8:1 */
+  --sys-line:        #DBCEBD;   /* hairlines */
   --sys-night:       #201C18;
 
+  --radius: 6px;                /* rounded rectangle, never a capsule */
+
   /* Type */
-  --sys-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --sys-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sys-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
               Helvetica, Arial, sans-serif;
 
-  --fs-hero:    clamp(3.25rem, 9vw, 6.5rem);
-  --fs-display: clamp(2.5rem, 5.5vw, 4rem);
-  --fs-title:   clamp(1.75rem, 3.2vw, 2.5rem);
+  /* Cormorant runs small on its em square, so the scale sits ~8% above what a
+     workhorse serif would need. */
+  --fs-hero:    clamp(3.5rem, 9vw, 7rem);
+  --fs-display: clamp(2.75rem, 5.5vw, 4.25rem);
+  --fs-title:   clamp(1.9rem, 3.2vw, 2.6rem);
   --fs-lead:    clamp(1.15rem, 1.7vw, 1.4rem);
   --fs-body:    1.0625rem;
   --fs-small:   0.9375rem;
@@ -76,8 +87,8 @@ img, svg, video { display: block; max-width: 100%; height: auto; }
 
 h1, h2, h3, h4 {
   font-family: var(--sys-display);
-  font-weight: 300;          /* display type is never bold */
-  letter-spacing: -0.025em;
+  font-weight: 400;          /* 400–500 only — Cormorant's 300 is too thin, bold is never the tool */
+  letter-spacing: -0.015em;  /* Cormorant is already narrow; barely any negative tracking */
   line-height: 1.08;
   margin: 0;
   text-wrap: balance;
@@ -178,8 +189,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
   font-weight: 500;
 }
 
-.hero-title    { font-size: var(--fs-hero);    letter-spacing: -0.035em; line-height: 0.98; }
-.display-title { font-size: var(--fs-display); letter-spacing: -0.03em;  line-height: 1.02; }
+.hero-title    { font-size: var(--fs-hero);    letter-spacing: -0.02em; line-height: 0.98; }
+.display-title { font-size: var(--fs-display); letter-spacing: -0.018em; line-height: 1.02; }
 .section-title { font-size: var(--fs-title);   line-height: 1.12; }
 
 .lead {
@@ -202,14 +213,15 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .pull-quote {
   font-family: var(--sys-display);
-  font-weight: 300;
-  font-size: clamp(1.5rem, 3vw, 2.15rem);
+  font-weight: 400;
+  font-style: italic;         /* the designer's-note voice — never an actual script font */
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
   line-height: 1.25;
   letter-spacing: -0.02em;
   max-width: 22ch;
 }
 
-.serif { font-family: var(--sys-display); font-weight: 300; }
+.serif { font-family: var(--sys-display); font-weight: 400; }
 
 /* --------------------------------------------------------------------------
    5. Buttons — exactly two, and one primary per viewport
@@ -218,12 +230,13 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
   padding: 0.95rem var(--s-5);
-  font-size: var(--fs-small);
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   text-decoration: none;
   border: 1px solid transparent;
-  border-radius: 2px;            /* considered, not a capsule */
+  border-radius: var(--radius);  /* rounded rectangle, not a capsule */
   cursor: pointer;
   background: none;
   transition: background var(--t-fast), color var(--t-fast),
@@ -232,8 +245,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .btn:active { transform: translateY(1px); }
 
-.btn--primary { background: var(--sys-clay); color: #FFF9F5; }
+.btn--primary { background: var(--sys-clay-fill); color: #FFF9F5; }
 .btn--primary:hover { background: var(--sys-clay-deep); }
+.btn--primary::after { content: "→"; }   /* gap on .btn spaces it */
 
 .btn--ghost { border-color: var(--sys-line); color: var(--sys-ink); }
 .btn--ghost:hover { border-color: var(--sys-ink); }
@@ -269,7 +283,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(250, 247, 242, 0.92);
+  background: rgba(247, 243, 237, 0.92);
   backdrop-filter: saturate(140%) blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color var(--t-fast);
@@ -283,8 +297,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .wordmark { text-decoration: none; display: flex; align-items: baseline; gap: var(--s-2); }
 .wordmark__mark {
-  font-family: var(--sys-display); font-weight: 400;
-  font-size: 1.6rem; letter-spacing: 0.08em;
+  font-family: var(--sys-display); font-weight: 500;
+  font-size: 1.75rem; letter-spacing: 0.08em;
 }
 .wordmark__sub {
   font-size: var(--fs-label); letter-spacing: 0.18em; text-transform: uppercase;
@@ -306,7 +320,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .nav-toggle {
   display: inline-flex; align-items: center; gap: var(--s-2);
-  border: 1px solid var(--sys-line); border-radius: 2px;
+  border: 1px solid var(--sys-line); border-radius: var(--radius);
   padding: 0.6rem var(--s-3); cursor: pointer;
   font-size: var(--fs-label); letter-spacing: 0.1em; text-transform: uppercase;
 }
@@ -320,8 +334,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .nav-panel[hidden] { display: none; }
 .nav-panel a {
   display: block; text-decoration: none;
-  font-family: var(--sys-display); font-weight: 300;
-  font-size: 1.6rem; letter-spacing: -0.02em;
+  font-family: var(--sys-display); font-weight: 400;
+  font-size: 1.75rem; letter-spacing: -0.01em;
   padding-block: var(--s-2);
 }
 
@@ -380,11 +394,11 @@ button, input, textarea, select { font: inherit; color: inherit; }
 @media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); gap: var(--s-7); } }
 
 .step__num {
-  font-family: var(--sys-display); font-weight: 300;
-  font-size: 1.5rem; color: var(--sys-clay-text);
+  font-family: var(--sys-display); font-weight: 400;
+  font-size: 1.6rem; color: var(--sys-clay-text);
   display: block; margin-bottom: var(--s-3);
 }
-.step__title { font-size: 1.5rem; margin-bottom: var(--s-2); }
+.step__title { font-size: 1.65rem; margin-bottom: var(--s-2); }
 
 .process { border-top: 1px solid var(--sys-line); }
 .process__item {
@@ -401,9 +415,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
   .process--three .process__item { grid-template-columns: 5rem 16rem 1fr; }
 }
 .process__num {
-  font-family: var(--sys-display); font-size: 1.15rem; color: var(--sys-clay-text);
+  font-family: var(--sys-display); font-size: 1.25rem; color: var(--sys-clay-text);
 }
-.process__title { font-family: var(--sys-display); font-weight: 400; font-size: 1.25rem; }
+.process__title { font-family: var(--sys-display); font-weight: 500; font-size: 1.4rem; }
 .process__body { color: var(--sys-ink-soft); font-size: var(--fs-small); grid-column: 2 / -1; }
 @media (min-width: 800px) { .process--three .process__body { grid-column: 3; } }
 
@@ -416,14 +430,14 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .chip {
   display: inline-flex; align-items: center;
   padding: 0.8rem var(--s-4);
-  border: 1px solid var(--sys-line); border-radius: 2px;
+  border: 1px solid var(--sys-line); border-radius: var(--radius);
   background: none; text-decoration: none; cursor: pointer;
   font-size: var(--fs-small);
   transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
 }
 .chip:hover { border-color: var(--sys-clay); color: var(--sys-clay-text); }
 .chip[aria-pressed="true"], .chip[data-selected="true"] {
-  background: var(--sys-clay); border-color: var(--sys-clay); color: #FFF9F5;
+  background: var(--sys-clay-fill); border-color: var(--sys-clay-fill); color: #FFF9F5;
 }
 .chip--wide { padding-inline: var(--s-5); }
 .chip--quiet { border-style: dashed; color: var(--sys-ink-soft); }
@@ -470,8 +484,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .story .ph { transition: opacity var(--t-fast); }
 .story:hover .ph { opacity: 0.88; }
 .story__title {
-  font-family: var(--sys-display); font-weight: 400;
-  font-size: 1.4rem; letter-spacing: -0.015em;
+  font-family: var(--sys-display); font-weight: 500;
+  font-size: 1.55rem; letter-spacing: -0.01em;
   margin-top: var(--s-4); margin-bottom: var(--s-2);
 }
 .story__want { color: var(--sys-ink-soft); font-size: var(--fs-small); }
@@ -504,7 +518,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-bottom: 1px solid var(--sys-line);
   align-items: baseline;
 }
-.price__name { font-family: var(--sys-display); font-weight: 400; font-size: 1.25rem; }
+.price__name { font-family: var(--sys-display); font-weight: 500; font-size: 1.35rem; }
 .price__from { font-size: var(--fs-small); color: var(--sys-clay-text); white-space: nowrap; }
 .price__note { grid-column: 1 / -1; font-size: var(--fs-small); color: var(--sys-ink-soft); }
 
@@ -518,8 +532,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
   align-items: center;
   padding-block: var(--s-4);
   border-bottom: 1px solid var(--sys-line);
-  font-family: var(--sys-display); font-weight: 300;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-family: var(--sys-display); font-weight: 400;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
 }
 .fabric-list .arrow { color: var(--sys-clay-text); font-size: var(--fs-small); }
 .fabric-list .to { text-align: right; }
@@ -537,7 +551,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   padding: 0.9rem var(--s-3);
   background: #fff;
   border: 1px solid var(--sys-line);
-  border-radius: 2px;
+  border-radius: var(--radius);
   transition: border-color var(--t-fast);
 }
 .input:focus, .textarea:focus, .select:focus { border-color: var(--sys-clay); outline-offset: 1px; }
@@ -568,8 +582,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
   color: var(--sys-ink-faint); margin-bottom: var(--s-3);
 }
 .flow__question {
-  font-family: var(--sys-display); font-weight: 300;
-  font-size: clamp(1.9rem, 4vw, 2.75rem); letter-spacing: -0.03em; line-height: 1.06;
+  font-family: var(--sys-display); font-weight: 400;
+  font-size: clamp(2.1rem, 4vw, 3rem); letter-spacing: -0.018em; line-height: 1.06;
   margin-bottom: var(--s-3);
 }
 .flow__nav {
@@ -579,7 +593,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 
 .uploads {
-  border: 1px dashed var(--sys-line); border-radius: 2px;
+  border: 1px dashed var(--sys-line); border-radius: var(--radius);
   padding: var(--s-6) var(--s-4); text-align: center;
   transition: border-color var(--t-fast), background var(--t-fast);
   cursor: pointer;
@@ -649,6 +663,13 @@ button, input, textarea, select { font: inherit; color: inherit; }
   transition: stroke-dashoffset 1100ms var(--ease) 120ms;
 }
 [data-thread] .thread path { stroke-dashoffset: 0; }
+
+/* The thread also travels the interface structurally — connecting the steps of
+   a journey (homepage model, order tracking). It draws when its section reveals,
+   and is simply there when JavaScript is not. */
+.thread--journey { height: 56px; margin-top: var(--s-7); }
+.reveal[data-shown="true"] .thread path { stroke-dashoffset: 0; transition-duration: 1600ms; }
+html:not(.js) .thread path { stroke-dashoffset: 0; }
 /* Under reduced motion the global rule zeroes the transition, so the thread
    is simply there, already drawn, the moment the confirmation appears. */
 
@@ -659,7 +680,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .wa-bar {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: var(--s-3);
-  border: 1px solid var(--sys-line); border-radius: 2px;
+  border: 1px solid var(--sys-line); border-radius: var(--radius);
   padding: var(--s-4) var(--s-5);
 }
 .section--night .wa-bar { border-color: rgba(250, 247, 242, 0.2); }

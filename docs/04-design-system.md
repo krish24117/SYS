@@ -1,8 +1,10 @@
 # SYS — Design System
 
-> Contemporary fashion magazine + private atelier.
+> Premium atelier + modern digital studio. The interface should feel like
+> **a private designer studio translated into software.**
 
-Editorial. Minimal. Warm. Human. Designer-led.
+Personal · Editorial · Sophisticated · Artistic · Feminine without being overly
+decorative · Warm · Contemporary · Trustworthy · Crafted.
 
 The implementation lives in `site/assets/css/sys.css`. This document explains the reasoning
 so the system survives contact with new pages and new people.
@@ -62,19 +64,31 @@ typical Indian boutique website.
 Warm paper, deep ink, and one restrained accent. Nothing else.
 
 ```
---sys-paper        #FAF7F2   warm off-white — the default ground
---sys-paper-deep   #F1EBE1   sections that need separation without a border
---sys-ink          #1F1B16   near-black, warm-shifted — body and headings
---sys-ink-soft     #554D43   secondary text
---sys-ink-faint    #726860   captions, metadata, eyebrow labels
---sys-clay         #A85F42   the accent — terracotta, not gold, not maroon.
-                             FILLS AND RULES ONLY (4.49:1 as text — fails AA)
---sys-clay-text    #9A5539   clay used as text. 5.26:1 on paper, 4.75:1 on deep
---sys-clay-deep    #8A4B33   accent hover / pressed
---sys-sage         #6E7A63   the one supporting hue, used sparingly
---sys-line         #E2D9CC   hairlines
+--sys-paper        #F7F3ED   Warm Ivory — the default ground
+--sys-paper-deep   #E8DED1   Soft Sand — cards, sections, subtle surfaces
+--sys-ink          #242321   Deep Charcoal — body and headings (14.2:1 on ivory)
+--sys-ink-soft     #554D43   secondary text (7.5:1 ivory, 6.3:1 sand)
+--sys-ink-faint    #685E56   captions, metadata, eyebrow labels (5.7:1 / 4.8:1)
+--sys-clay         #B56F5B   Muted Terracotta — THE accent. Rules, highlights,
+                             active states, focus rings. Never text, never
+                             under white text (3.5:1 as text — fails AA)
+--sys-clay-fill    #A26351   interactive fills — buttons, selected chips.
+                             White text on it reads 4.5:1
+--sys-clay-text    #8B5546   terracotta used as text (5.5:1 ivory, 4.5:1 sand)
+--sys-clay-deep    #8D5646   fill hover / pressed (5.7:1 under white)
+--sys-brass        #A58A61   Antique Brass — hairline details only, extremely
+                             sparingly, never text (3.0:1)
+--sys-sage         #6E7A63   supporting hue — tints and fills
+--sys-ok           #5E6A54   success as text — muted sage (5.2:1)
+--sys-error        #96473B   error as text — Muted Brick (5.8:1 / 4.8:1)
+--sys-line         #DBCEBD   hairlines
 --sys-night        #201C18   inverted sections
 ```
+
+**The ratio discipline: 80% neutral / 15% warm secondary / 5% accent.** Ivory carries
+the page, sand separates, terracotta punctuates. Brass exists for the occasional
+hairline that wants warmth without pulling toward the accent — if it appears more than
+once or twice on a page, it is being misused.
 
 **Why terracotta.** It is warm and Indian in feeling without being maroon, and it reads as a
 pigment — clay, earth, dye — rather than as metal. Gold says "expensive". Clay says
@@ -84,11 +98,13 @@ pigment — clay, earth, dye — rather than as metal. Gold says "expensive". Cl
 labels, and the occasional editorial flourish. It never fills a large area. If a page has
 more than roughly 5% clay by area, it has too much.
 
-**Two clays, and the difference matters.** `--sys-clay` is the brand fill: button
-backgrounds, the eyebrow rule, the progress bar. As *text* it measures 4.49:1 on paper and
-4.04:1 on `--sys-paper-deep`, so it fails AA at body sizes — every clay-coloured word uses
-`--sys-clay-text` instead. The two are close enough to read as one accent and far enough
-apart to be legible.
+**One terracotta, three jobs — and the difference matters.** The palette's stated
+accent, `#B56F5B`, fails AA both as text (3.5:1 on ivory) and under white button text
+(3.7:1). So it holds the *decorative* accent roles — rules, highlights, active-state
+borders, focus rings — while two derived shades do the load-bearing work:
+`--sys-clay-fill` (`#A26351`) under white text on buttons and selected chips, and
+`--sys-clay-text` (`#8B5546`) wherever terracotta is a word. All three are close enough
+to read as one hue; the derivation is measured, not aesthetic.
 
 **Dark sections.** `--sys-night` is used for at most two full-bleed moments per page — the
 transformation strip and the closing CTA are the natural candidates. Inversion is a pacing
@@ -104,13 +120,17 @@ Two families. Both loaded from Google Fonts with real fallback stacks so the pag
 legible before — and without — the webfonts.
 
 ```
---sys-display : "Fraunces", Georgia, "Times New Roman", serif
+--sys-display : "Cormorant Garamond", Georgia, "Times New Roman", serif
 --sys-body    : "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
 ```
 
-**Fraunces** is a warm, slightly quirky variable serif. At light weights and large sizes it
-carries editorial authority without the funeral-invitation formality of Cormorant or the
-generic-luxury feel of a Didone. **Inter** does everything else, invisibly.
+**Cormorant Garamond** is the fashion-editorial voice — a high-contrast garalde that
+reads as a magazine masthead at display sizes. It comes with three handling rules:
+never below weight 400 (its 300 disappears against ivory), a scale set ~8% larger than
+a workhorse serif would need (it runs small on its em square), and almost no negative
+tracking (it is already narrow). Its *italic* is the designer's-note voice — the
+"handwritten" element of the system — so no actual script font ever appears.
+**Inter** does everything else, invisibly.
 
 ### Scale
 
@@ -118,9 +138,9 @@ Fluid, `clamp()`-based, so the page is composed rather than merely responsive.
 
 | Token | Range | Use |
 | --- | --- | --- |
-| `--fs-hero` | 3.25 – 6.5rem | Homepage hero only |
-| `--fs-display` | 2.5 – 4rem | Page titles |
-| `--fs-title` | 1.75 – 2.5rem | Section headings |
+| `--fs-hero` | 3.5 – 7rem | Homepage hero only |
+| `--fs-display` | 2.75 – 4.25rem | Page titles |
+| `--fs-title` | 1.9 – 2.6rem | Section headings |
 | `--fs-lead` | 1.15 – 1.4rem | Standfirst paragraphs |
 | `--fs-body` | 1.0625rem | Body |
 | `--fs-small` | 0.9375rem | Secondary |
@@ -128,12 +148,15 @@ Fluid, `clamp()`-based, so the page is composed rather than merely responsive.
 
 ### Rules
 
-- Display type is set at **weight 300–400 only**. Never bold. Weight is not how this brand
-  creates emphasis — scale and space are.
-- Display type gets **negative tracking** (`-0.02em` to `-0.035em`) and tight leading
-  (1.02–1.12). This is the single biggest difference between editorial and default.
+- Display type is set at **weight 400–500 only**. Never bold, and never Cormorant's
+  300. Weight is not how this brand creates emphasis — scale and space are.
+- Display type gets gentle **negative tracking** (`-0.015em` to `-0.02em`) and tight
+  leading (1.02–1.12).
 - Body copy is capped at **62 characters** (`--measure`). Standfirsts at 46.
-- Uppercase is reserved for the `--fs-label` eyebrow only. Headlines are sentence case.
+- Uppercase is reserved for the `--fs-label` eyebrow and for buttons. Headlines are
+  sentence case.
+- Cormorant Garamond *italic* appears only as the designer's voice — pull quotes and
+  designer notes — and always signed.
 - Never centre a paragraph longer than two lines.
 
 ---
@@ -171,13 +194,14 @@ never uniform heights.
 
 Only two, and the hierarchy is absolute.
 
-- **`.btn--primary`** — solid clay, white text. This is *Start Your Story*. There is **one
-  per viewport**, ever.
+- **`.btn--primary`** — solid `--sys-clay-fill`, white text, and a trailing **→**. This
+  is *Start Your Story*. There is **one per viewport**, ever.
 - **`.btn--ghost`** — ink text, hairline border, transparent. Everything else, including
-  *Explore Our Work* and *Start on WhatsApp*.
+  *Explore Our Work* and *Start on WhatsApp*. Inline secondary actions can also be the
+  `.link` text button with an arrow.
 
-Both are pill-less: a 2px radius, not a rounded capsule. Sharp corners read as considered;
-capsules read as an app.
+Both are set uppercase at 0.8125rem with wide tracking, on a **6px rounded
+rectangle** — never a capsule, never a giant colourful e-commerce button.
 
 ### Section label
 
@@ -188,6 +212,13 @@ capsules read as an app.
 A short clay rule followed by a tracked uppercase label at `--fs-label`. This is the only
 recurring ornament in the system, and it does the work that borders and flourishes would
 otherwise do.
+
+### Wordmark
+
+`SYS` set large in the display serif with generous tracking, `STYLE YOUR STORIES` in a
+small tracked uppercase beneath. That is the whole logo. Never: sewing-machine icons,
+scissors, needles, hangers, dress silhouettes — each one instantly relabels SYS as a
+tailoring business, which is the one thing the brand is not.
 
 ### Cards
 
@@ -232,9 +263,14 @@ Exactly three, each tied to a real moment in the story — and nothing else:
 - **A design is approved** → the arc advances visibly: Story → Design → Create.
 - **A story is completed** → *"Your story is ready."*
 
-The thread is the signature. It stays a 1.5px stroke and about a second of drawing;
-under `prefers-reduced-motion` it is simply there, already drawn. Anything beyond these
-three moments is gimmick, not language.
+The thread is the signature — and it is structural, not only a moment. **The Story
+Thread** is a very thin curved line that travels through the interface wherever a
+journey is shown: connecting the three steps of the model on the homepage, and later
+the app's order journey. It represents story → design → garment. Rules: 1.5px stroke in
+terracotta, at most one thread per screen, about a second and a half of drawing when
+its section reveals; under `prefers-reduced-motion` — and without JavaScript — it is
+simply there, already drawn. Anything beyond the thread and the three moments above is
+gimmick, not language.
 
 ---
 
@@ -264,10 +300,12 @@ look inevitable.
 Non-negotiable, and mostly free if handled at the token level.
 
 - All text meets WCAG AA (4.5:1). Measured against `--sys-paper` / `--sys-paper-deep`:
-  `--sys-ink` 16.0 / 15.1, `--sys-ink-soft` 7.8 / 7.0, `--sys-ink-faint` 5.1 / 4.6,
-  `--sys-clay-text` 5.3 / 4.8. Button text (`#FFF9F5` on `--sys-clay`) is 4.6.
-  On `--sys-night`: paper 15.8, `--sys-clay-text` 4.98.
-- `--sys-clay` itself is never used for text — see §2.
+  `--sys-ink` 14.2 / 11.8, `--sys-ink-soft` 7.5 / 6.3, `--sys-ink-faint` 5.7 / 4.8,
+  `--sys-clay-text` 5.5 / 4.5, `--sys-error` 5.8 / 4.8, `--sys-ok` 5.2 on ivory.
+  Button text (`#FFF9F5` on `--sys-clay-fill`) is 4.5, on hover 5.7.
+  On `--sys-night`: paper 15.8+, the rebound `--sys-clay-text` (#C07A5C) 4.98.
+- `--sys-clay` and `--sys-brass` are never used for text — see §2. As non-text UI
+  (focus rings, active borders) terracotta measures 3.5:1, above the 3:1 minimum.
 - Every interactive element has a visible `:focus-visible` ring in clay with a 2px offset.
 - The guided flow is fully keyboard-operable; each step moves focus to its heading.
 - Uploads, chips and sliders carry real labels — no icon-only controls.

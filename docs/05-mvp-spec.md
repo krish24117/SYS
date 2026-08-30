@@ -263,7 +263,110 @@ already earning; everything after that is efficiency.
 
 ---
 
-## 9. Phase 3 — the design intelligence layer
+## 9. UI treatment
+
+How the screens of §4–§5 should feel. Tokens, type and the thread come from
+`docs/04-design-system.md`; this section is the app-specific application.
+
+### 9.1 Create — conversational, never a form
+
+The feel is **ChatGPT + Pinterest + personal stylist**. Header:
+
+> Let's create something that's yours.
+
+Then one conversational card: *What are you dressing for?* — large selectable tiles
+(Wedding · Celebration · Party · Festival · Everyday · Something Special), followed by
+*"Or tell us in your own words."* over a large free-text box. The app home uses this
+short occasion set; the website keeps its longer conversational list.
+
+### 9.2 Inspiration and the Storyboard
+
+A large visual drop zone — *Show us what inspires you* / *Drag images here* /
+*+ Add inspiration* — with the sources named underneath: Instagram · Pinterest ·
+Photos · Sketches · Fabric.
+
+Uploads land in a masonry **Storyboard**: inspiration photos, fabric, colour, texture,
+silhouette, and the designer's handwritten-style note, mixed. Above it, the read-back:
+
+```
+Your Storyboard
+Mood: Elegant / Contemporary / Soft
+Colours: Ivory / Rose / Deep Green
+Silhouette: Structured
+```
+
+### 9.3 Design directions — editorial boards, not product cards
+
+```
+Direction 01 — Modern Heritage
+Short description.
+Silhouette: Structured · Fabric: Silk · Detail: Minimal handwork
+[ View Design ]
+```
+
+Three directions, named like editorial spreads, each with its board.
+
+### 9.4 Designer notes
+
+The emotional core. Set in the display serif's italic — never an actual script font —
+used sparingly, and always signed:
+
+> *"I would keep the neckline clean and let the sleeve detail become the statement."*
+> — [Designer Name]
+
+### 9.5 Fit Profile — never clinical
+
+Titled **Your Fit Profile**, not "Measurements". Values (height, shoulder, bust,
+waist, hip) plus preference sliders:
+
+```
+Relaxed   ○────●────○   Fitted
+```
+
+And the open question that becomes permanent profile data: *"Anything you'd like us
+to remember?"* → "I prefer longer sleeves."
+
+### 9.6 The order journey
+
+A horizontal story progression, the current stage emphasised, the Story Thread
+running through it:
+
+```
+IDEA → DESIGN → FIT → CREATE → WEAR
+```
+
+(The display form of the §4.3 arc: Inspiration folds into Idea, Craft shows as
+Create.) Beneath it, status in words, with a real date:
+
+> Design approved. Your garment is now moving into production.
+> Estimated completion: 12 Sept
+
+Never "Order status: Processing."
+
+### 9.7 Customer dashboard
+
+```
+Good morning, [Name]
+
+Your Stories
+  The Wedding Story    Design approved · Creating now
+  The Festive Story    Delivered
+  [ Start another story + ]
+
+Your Style   Contemporary · Elegant · Minimal
+Your Fit     your saved measurements
+For You      suggested designs from your previous stories
+```
+
+### 9.8 Designer dashboard header
+
+**SYS Studio** — *12 active stories*, then the §5.1 queue and customer cards. The
+studio side is deliberately more functional than the customer side: density is a
+feature there, not a flaw.
+
+---
+
+## 10. Phase 3 — the design intelligence layer
 
 Only once there is a corpus of real commissions:
 
