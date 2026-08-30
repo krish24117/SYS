@@ -305,6 +305,11 @@ look inevitable.
 
 - **Aspect ratios:** 4:5 portrait for garments, 3:2 for process, 1:1 only in the
   transformation strip. Consistency across a page matters more than any individual crop.
+- **Imagery geometry — the curve belongs to imagery only.** Portrait and landscape
+  frames take the **atelier arch**: fully rounded top, square base — the salon mirror,
+  the fitting-room doorway. The four 1:1 process frames are full circles — the
+  **embroidery hoop**. Buttons, chips and every interface element stay rectangular;
+  that contrast is what keeps the curve reading as art direction rather than soft UI.
 - **Treatment:** natural light, warm neutrals, minimal retouching. The paper background
   should feel continuous with the photograph's ground.
 - **Never generic stock fashion photography.** The editorial vocabulary is: natural

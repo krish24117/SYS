@@ -397,10 +397,15 @@ button, input, textarea, select { font: inherit; color: inherit; }
 [data-thread] .plate,
 html:not(.js) .plate { stroke-dashoffset: 0; }
 .ph:hover .plate { transform: scale(1.03); }
-.ph--portrait { aspect-ratio: 4 / 5; }
-.ph--process  { aspect-ratio: 3 / 2; }
-.ph--square   { aspect-ratio: 1 / 1; }
-.ph--tall     { aspect-ratio: 3 / 4; }
+/* Imagery geometry — the curve belongs to imagery only; the interface stays
+   rectangular. Portrait frames take the atelier arch (the salon mirror, the
+   fitting-room doorway); the four process frames are full circles — the
+   embroidery hoop. */
+.ph--portrait { aspect-ratio: 4 / 5; border-radius: 999px 999px var(--radius) var(--radius); }
+.ph--process  { aspect-ratio: 3 / 2; border-radius: 999px 999px var(--radius) var(--radius); }
+.ph--square   { aspect-ratio: 1 / 1; border-radius: 50%; }
+.ph--tall     { aspect-ratio: 3 / 4; border-radius: 999px 999px var(--radius) var(--radius); }
+.ph--square .plate { width: 54%; height: 62%; }   /* breathing room inside the hoop */
 
 /* --------------------------------------------------------------------------
    8. Steps — the three-part model, and the numbered process list
