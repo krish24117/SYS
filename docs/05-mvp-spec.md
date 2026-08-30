@@ -126,6 +126,41 @@ GiftCredit                                 ← Phase 2b
 
 ## 4. Customer flows
 
+### 4.0 The master flow
+
+Every screen in the product sits somewhere on this line:
+
+```
+        SYS — STYLE YOUR STORIES
+                   │
+            [ START A STORY ]
+                   │
+               YOUR STORY
+           ┌───────┼────────┐
+        Occasion  Idea    Fabric      ← three entry points, one story
+           └───────┼────────┘
+                   │
+              INSPIRATION
+                   │
+               DESIGNER               ← the human enters here, before any
+                   │                     design exists — never after
+                DESIGN
+                   │
+                  FIT
+                   │
+               CREATION
+                   │
+                 WEAR
+                   │
+               MY STORIES             ← where every story lives afterwards
+```
+
+Three things this diagram fixes: the entry points (occasion, idea, fabric) converge
+into one story rather than branching into different products; **DESIGNER is an explicit
+stage**, not a support function — nothing proceeds to design without her; and the line
+ends in MY STORIES, not in a receipt — the relationship, not the transaction, is the
+terminal state.
+
 ### 4.1 Start a story
 
 ```
@@ -175,19 +210,25 @@ Stage changes push a WhatsApp notification with a deep link back into the app.
 
 ### 5.1 Today's work
 
-The landing screen is a queue, not an analytics dashboard.
+The landing screen is a stage-count table, not an analytics dashboard. The header
+counts every active story; the table says where they all stand:
 
 ```
-New Stories          7      unread enquiries
-Design Reviews       4      awaiting her direction or her response to a change request
-Measurements         3      booked or outstanding
-Fittings             5      scheduled
-Production           8      in stages 4–7
-Ready for Delivery   3      stage 8 pending handover
+SYS Studio — 12 active stories
+
+Stage                Count
+New                  4
+Designing            3
+Awaiting approval    2
+Production           2
+Fitting              1
 ```
 
-Each number opens a filtered list. Every item in every list has exactly one obvious next
-action.
+Each count opens the filtered list of stories at that stage, and every item in every
+list has exactly one obvious next action. (Tracker mapping: New = 01 · Designing = 02
+· Awaiting approval = a direction sent, customer deciding · Fitting = 03 and 06 ·
+Production = 04, 05, 07.) The counts are workload, not analytics — the question the
+screen answers is "what needs me today?".
 
 Below the queue, the active stories as **customer cards** — name first, because the
 designer thinks in people, not orders:
@@ -365,7 +406,8 @@ For You      suggested designs from your previous stories
 
 ### 9.8 Designer dashboard header
 
-**SYS Studio** — *12 active stories*, then the §5.1 queue and customer cards. The
+**SYS Studio** — *12 active stories*, then the §5.1 stage-count table and customer
+cards. The
 studio side is deliberately more functional than the customer side: density is a
 feature there, not a flaw.
 
